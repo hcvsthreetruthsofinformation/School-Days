@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Off-Canvas選單與影片播放器</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #main-content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+    }
+
+    #offcanvas {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    #offcanvas a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    #offcanvas a:hover {
+      color: #818181;
+    }
+
+    #offcanvas .close-btn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    #video-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    video {
+      width: 80%;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="offcanvas">
+  <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+  <a href="#" onclick="playVideo('videos/Edited/school_life.mp4')">學校生活影片</a>
+  <a href="download.html">下載頁面</a>
+  <!-- 添加更多影片 -->
+</div>
+
+<div id="main-content">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; 開啟選單</span>
+  <h2>主要內容</h2>
+  <div id="video-container">
+    <video controls id="video-player">
+        <source src="videos/Edited/school_life.mp4" type="video/mp4">
+        您的瀏覽器不支援影片播放。
+      </video>
+  </div>
+</div>
+
+<script>
+  function openNav() {
+    document.getElementById("offcanvas").style.width = "250px";
+    document.getElementById("main-content").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("offcanvas").style.width = "0";
+    document.getElementById("main-content").style.marginLeft= "0";
+  }
+
+  function playVideo(videoPath) {
+    var videoPlayer = document.getElementById('video-player');
+    videoPlayer.src = videoPath;
+    videoPlayer.load();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>影片下載頁面</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #main-content {
+      transition: margin-left 0.5s;
+      padding: 16px;
+    }
+
+    #offcanvas {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    #offcanvas a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    #offcanvas a:hover {
+      color: #818181;
+    }
+
+    #offcanvas .close-btn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    #download-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .download-link {
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="offcanvas">
+  <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+  <a href="index.html">回到主頁</a>
+  <a href="#" onclick="playVideo('videos/other_video.mp4')">其他影片</a>
+  <!-- 添加更多影片 -->
+</div>
+
+<div id="main-content">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; 開啟選單</span>
+  <h2>影片下載頁面</h2>
+  <div id="download-container">
+    <a href="videos/Edited/school_life.mp4" download class="download-link">下載學校生活影片</a>
+    <a href="videos/other_video.mp4" download class="download-link">下載其他影片</a>
+    <!-- 添加更多下載連結 -->
+  </div>
+</div>
+
+<script>
+  function openNav() {
+    document.getElementById("offcanvas").style.width = "250px";
+    document.getElementById("main-content").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("offcanvas").style.width = "0";
+    document.getElementById("main-content").style.marginLeft= "0";
+  }
+
+  function playVideo(videoPath) {
+    var videoPlayer = document.getElementById('video-player');
+    videoPlayer.src = videoPath;
+    videoPlayer.load();
+  }
+</script>
+
+</body>
+</html>
